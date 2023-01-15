@@ -74,6 +74,8 @@ public partial class NavigationDrawer : TemplatedView, ICommandElement, IVisualT
 
     public event EventHandler<SelectedItemChangedEventArgs> SelectedItemChanged;
 
+    private double _oldPanelWidth;
+
     private void OnDisplayModeChanged()
     {
         if (this.Handler != null)
@@ -106,7 +108,15 @@ public partial class NavigationDrawer : TemplatedView, ICommandElement, IVisualT
         this.SwitchIcon = this.IsPaneOpen ? IconKind.MenuOpen : IconKind.Menu;
         if (this.DisplayMode == DrawerDisplayMode.Split)
         {
-            this.PaneWidth = this.IsPaneOpen ? 240d : 80d;
+            if (this.IsPaneOpen)
+            {
+                this.PaneWidth = _oldPanelWidth != 0 ? _oldPanelWidth : 240d;
+            }
+            else
+            {
+                _oldPanelWidth = this.PaneWidth;
+                this.PaneWidth = 80d;
+            }
         }
     }
 

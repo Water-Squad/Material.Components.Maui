@@ -11,7 +11,7 @@ public partial class SplitViewHandler : ViewHandler<SplitView, WSplitView>
     {
         var reuslt = new WSplitView
         {
-            OpenPaneLength = 240,
+            OpenPaneLength = this.VirtualView.PaneWidth,
             CompactPaneLength = 80,
             IsPaneOpen = this.VirtualView.IsPaneOpen,
             DisplayMode = this.VirtualView.DisplayMode switch

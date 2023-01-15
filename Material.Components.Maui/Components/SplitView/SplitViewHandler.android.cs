@@ -17,7 +17,7 @@ public partial class SplitViewHandler : ViewHandler<SplitView, DrawerLayout>
 
     protected override ASplitView CreatePlatformView()
     {
-        this.openWidth = (int)this.Context.ToPixels(240);
+        this.openWidth = (int)this.Context.ToPixels(this.VirtualView.PaneWidth);
         this.closeWidth = (int)this.Context.ToPixels(80);
         var result = new ASplitView(this.Context);
         result.DrawerOpened += (_, _) => this.VirtualView.IsPaneOpen = true;

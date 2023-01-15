@@ -17,6 +17,9 @@ public partial class SplitView : View, ICommandElement, IVisualTreeElement
     [AutoBindable(DefaultValue = "true")]
     private readonly bool isPaneOpen;
 
+    [AutoBindable(DefaultValue = "80d")]
+    private readonly double paneWidth;
+
     [AutoBindable]
     private readonly ICommand command;
 

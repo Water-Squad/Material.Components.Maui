@@ -228,7 +228,7 @@ public partial class NavigationDrawerItem
             var result = (View)this.GetValue(ContentProperty);
             if (result == null && this.ContentType != null)
             {
-                result = (View)Activator.CreateInstance(this.ContentType);
+                result = (View)ServiceProvider.GetService(this.ContentType) ?? (View)Activator.CreateInstance(this.ContentType);
                 this.SetValue(ContentProperty, result);
             }
             return result;

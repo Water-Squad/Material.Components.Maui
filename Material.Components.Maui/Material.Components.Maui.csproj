@@ -20,8 +20,14 @@
 
 	<PropertyGroup>
 	  <NoWarn>1701;1702;0169;0067;IDE0051</NoWarn>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Title>Material.Components.Maui</Title>
+	  <Description>Material You Components for .NET MAUI</Description>
+	  <RepositoryUrl>https://github.com/Water-Squad/Material.Components.Maui</RepositoryUrl>
+	  <PackageProjectUrl>https://github.com/Water-Squad/Material.Components.Maui</PackageProjectUrl>
+    <Version>1.0.1</Version>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui.Markup" Version="2.1.0" />
 	  <PackageReference Include="M.BindableProperty.Generator" Version="0.9.3" />

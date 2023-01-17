@@ -39,6 +39,9 @@ public partial class NavigationDrawer : TemplatedView, ICommandElement, IVisualT
         set => this.SetValue(FooterItemsProperty, value);
     }
 
+    [AutoBindable]
+    private readonly View header;
+
     [AutoBindable(OnChanged = nameof(OnDisplayModeChanged))]
     private readonly DrawerDisplayMode displayMode;
 

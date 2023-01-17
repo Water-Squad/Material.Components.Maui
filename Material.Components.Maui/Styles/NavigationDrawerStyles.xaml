@@ -32,7 +32,7 @@
                                 Shape="0,16,0,16" />
                             <Grid
                                 Padding="12"
-                                RowDefinitions="auto,*,auto"
+                                RowDefinitions="auto,auto,*,auto"
                                 WidthRequest="{TemplateBinding PaneWidth}">
                                 <Grid
                                     Grid.Row="0"
@@ -55,10 +55,12 @@
                                         Icon="{TemplateBinding SwitchIcon}"
                                         Style="{DynamicResource StandardIconButtonStyle}" />
                                 </Grid>
-                                <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                                <views:ContentPresenter Grid.Row="1"
+                                                        Content="{TemplateBinding Header}" />
+                                <ScrollView Grid.Row="2" VerticalScrollBarVisibility="Never">
                                     <VerticalStackLayout x:Name="PART_Items" Margin="0,20" />
                                 </ScrollView>
-                                <VerticalStackLayout x:Name="PART_Footer" Grid.Row="2" />
+                                <VerticalStackLayout x:Name="PART_Footer" Grid.Row="3" />
                             </Grid>
                         </Grid>
                     </views:SplitView.Pane>

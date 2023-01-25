@@ -161,6 +161,38 @@ public partial class SKTouchCanvasView
         this.InvalidateSurface();
     }
 
+    protected override void OnPropertyChanged(string propertyName = null)
+    {
+        base.OnPropertyChanged(propertyName);
+
+        switch (propertyName)
+        {
+            case nameof(Command):
+            {
+                if (Command != null)
+                {
+                    Command.CanExecuteChanged -= OnCommandCanExecuteChanged;
+                    Command.CanExecuteChanged += OnCommandCanExecuteChanged;
+
+                    UpdateIsEnabledState();
+                }
+
+                break;
+            }
+        }
+    }
+
+    private void OnCommandCanExecuteChanged(object sender, EventArgs e)
+    {
+        UpdateIsEnabledState();
+    }
+
+    private void UpdateIsEnabledState()
+    {
+        bool isEnabled = Command == null || Command.CanExecute(CommandParameter);
+        IsEnabled = isEnabled;
+    }
+
     private void ChangeControlState(SKTouchEventArgs e)
     {
         if (this is IView view)

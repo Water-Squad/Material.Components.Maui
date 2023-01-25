@@ -366,7 +366,8 @@ public partial class Button : SKTouchCanvasView, IButton, ITextElement, IPadding
     protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         base.OnPropertyChanged(propertyName);
-        if (propertyName == "IsEnabled")
+
+        if (propertyName == nameof(IsEnabled))
         {
             this.ControlState = this.IsEnabled ? ControlState.Normal : ControlState.Disabled;
         }

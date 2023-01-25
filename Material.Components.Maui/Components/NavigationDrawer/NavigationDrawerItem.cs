@@ -212,6 +212,12 @@ public partial class NavigationDrawerItem
     [AutoBindable]
     private readonly Color activeIndicatorColor;
 
+    [AutoBindable(OnChanged = nameof(OnPropertyChanged))]
+    public readonly int badgeCounter;
+
+    [AutoBindable(OnChanged = nameof(OnPropertyChanged))]
+    public readonly Color badgeColor;
+
     public float ChangingPercent { get; private set; } = 1f;
 
     public static readonly BindableProperty ContentProperty = BindableProperty.Create(

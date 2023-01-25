@@ -18,6 +18,7 @@ internal class NavigationDrawerItemDrawable
         this.DrawPathIcon(canvas, bounds);
         this.DrawImageIcon(canvas, bounds);
         this.DrawText(canvas, bounds);
+        this.DrawBadgeCounter(canvas, bounds);
         this.DrawRippleEffect(canvas, bounds);
     }
 
@@ -119,5 +120,99 @@ internal class NavigationDrawerItemDrawable
             color,
             this.view.RipplePercent
         );
+    }
+
+    private void DrawBadgeCounter(SKCanvas canvas, SKRect bounds)
+    {
+        if (this.view.BadgeCounter < 1 || this.view.BadgeColor == null)
+        {
+            return;
+        }
+
+        if (!this.view.IsExtended)
+        {
+            DrawBadgeDot(canvas, bounds);
+            return;
+        }
+
+        canvas.Save();
+
+        var backgroundPaint = new SKPaint
+        {
+            Style = SKPaintStyle.Fill,
+            Color = this.view.BadgeColor.ToSKColor(),
+            IsAntialias = true
+        };
+        var borderPaint = new SKPaint
+        {
+            Style = SKPaintStyle.Stroke,
+            Color = SKColors.White,
+            StrokeWidth = 0.5f,
+            IsAntialias = true
+        };
+
+        string text = this.view.BadgeCounter > 99 ? "99+" : this.view.BadgeCounter.ToString();
+
+        var textPaint = new SKPaint
+        {
+            IsStroke = false,
+            IsAntialias = true,
+            IsLinearText = true,
+            TextSize = 12f,
+            Color = SKColors.White
+        };
+
+        var textBounds = new SKRect();
+        textPaint.MeasureText(text, ref textBounds);
+
+        float horizontalPadding = 4f;
+        float width = Math.Max(textBounds.Width + horizontalPadding * 2, 16f);
+        float height = 16f;
+
+        float right = bounds.Width - 16f;
+        float left = right - width;
+        float top = bounds.MidY - height / 2;
+        float bottom = top + height;
+        float radius = 16f;
+
+        var roundRect = new SKRoundRect(new SKRect(left, top, right, bottom), radius);
+        canvas.DrawRoundRect(roundRect, backgroundPaint);
+
+        roundRect.Inflate(borderPaint.StrokeWidth, borderPaint.StrokeWidth);
+        canvas.DrawRoundRect(roundRect, borderPaint);
+
+        float x = left + horizontalPadding + (this.view.BadgeCounter < 10 ? 1f : -1f);
+        float y = bounds.MidY - textBounds.MidY;
+        canvas.DrawText(text, x, y, textPaint);
+
+        canvas.Restore();
+    }
+
+    private void DrawBadgeDot(SKCanvas canvas, SKRect bounds)
+    {
+        canvas.Save();
+
+        var backgroundPaint = new SKPaint
+        {
+            Style = SKPaintStyle.Fill,
+            Color = this.view.BadgeColor.ToSKColor(),
+            IsAntialias = true
+        };
+        var borderPaint = new SKPaint
+        {
+            Style = SKPaintStyle.Stroke,
+            Color = SKColors.White,
+            StrokeWidth = 1f,
+            IsAntialias = true
+        };
+
+        float x = 36f;
+        float y = 18f;
+        float radius = 4f;
+
+        canvas.DrawCircle(x, y, radius, backgroundPaint);
+        canvas.DrawCircle(x, y, radius, borderPaint);
+
+        canvas.Restore();
     }
 }

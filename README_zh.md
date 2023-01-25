@@ -1,8 +1,8 @@
 # Material.Components.Maui
+[![version](https://img.shields.io/nuget/vpre/Material.Components.Maui?style=for-the-badge)](https://www.nuget.org/packages/Material.Components.Maui/0.1.0-beta) 
+[![downloads](https://img.shields.io/nuget/dt/Material.Components.Maui?style=for-the-badge)](https://www.nuget.org/packages/Material.Components.Maui/0.1.0-beta) 
 
 中文 | [English](README.md)
-
-Material You Components for .NET MAUI
 
 ![](assets/preview.png)
 
@@ -10,8 +10,7 @@ Material You Components for .NET MAUI
 
 ## 快速开始
 
-- 克隆这个仓库,  以及在你的maui项目中引用
-- 在你的"MauiProgram.cs"添加 UseMaterialComponents
+- 在 MauiProgram.cs 添加 UseMaterialComponents
 
 ```C#
 using Material.Components.Maui.Extensions;
@@ -39,7 +38,7 @@ public static class MauiProgram
 }
 ```
 
-- 在你的"App.xaml"添加 Material的颜色和风格
+- 在App.xaml 添加 Material的颜色和风格
 
 ```xaml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -73,24 +72,25 @@ public static class MauiProgram
 
 | control   | android    | windows   |  ios&mac   |
 | ---- | ---- | ---- |----|
-| button    | 😄 | 😄 | 🤔 |
-| IconButton | 😄 | 😄 |🤔|
+| button    | 😄 | 😄 | 😄 |
+| IconButton | 😄 | 😄 |😄|
 | Card | 😄 | 😄 |🤔|
-| CheckBox | 😄 | 😄 |🤔|
+| CheckBox | 😄 | 😄 |😄|
 | Chip | 😄 | 😄 |🤔|
 | ComboBox | 😄 | 😄 |😭|
 | ContextMenu | 😄 | 😄 |😭|
-| FAB | 😄 | 😄 |🤔|
-| Label | 😄 | 😄 |🤔|
+| FAB | 😄 | 😄 |😄|
+| Label | 😄 | 😄 |😄|
 | NavigationBar | 😄 | 😄 |😭|
 | NavigationDrawer | 😄 | 😄 |😭|
 | Popup | 😄 | 😄 |😭|
-| ProgressIndicator | 😄 | 😄 |🤔|
-| RadioButton | 😄 | 😄 |🤔|
+| ProgressIndicator | 😄 | 😄 |😄|
+| RadioButton | 😄 | 😄 |😄|
 | SplitView | 😄 | 😄 |😭|
-| Switch | 😄 | 😄 |🤔|
+| Switch | 😄 | 😄 |😄|
 | Tabs | 😄 | 😄 |😭|
-| WrapLayout | 😄 | 😄 |🤔|
+| TextField | 😄 | 😄 |😭|
+| WrapLayout | 😄 | 😄 |😄|
 
 ## 贡献
 

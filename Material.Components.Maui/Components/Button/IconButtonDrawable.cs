@@ -39,8 +39,9 @@ internal class IconButtonDrawable : ButtonDrawable
 
         if (this.view.IconSize > 0)
         {
-            var scale = this.view.IconSize / path.Bounds.Width;
-
+            float largestSide = Math.Max(path.Bounds.Width, path.Bounds.Height);
+            float scale = Math.Min(this.view.IconSize / largestSide, 1f);
+            
             path.Transform(SKMatrix.CreateScale(scale, scale));
         }
 

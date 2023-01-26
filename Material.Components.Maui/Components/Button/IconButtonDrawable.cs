@@ -36,9 +36,19 @@ internal class IconButtonDrawable : ButtonDrawable
             IsAntialias = true,
         };
         var path = SKPath.ParseSvgPathData(this.view.Icon.GetData());
-        var x = bounds.MidX - 12;
-        var y = bounds.MidY - 12;
+
+        if (this.view.IconSize > 0)
+        {
+            var scale = this.view.IconSize / path.Bounds.Width;
+
+            path.Transform(SKMatrix.CreateScale(scale, scale));
+        }
+
+        var x = bounds.MidX - path.Bounds.MidX;
+        var y = bounds.MidY - path.Bounds.MidY;
+
         path.Offset(x, y);
+
         canvas.DrawPath(path, paint);
         canvas.Restore();
     }

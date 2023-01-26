@@ -187,6 +187,9 @@ public partial class IconButton : SKTouchCanvasView, IButton
     #endregion
     #endregion
 
+    [AutoBindable(OnChanged = nameof(OnPropertyChanged))]
+    public readonly int iconSize;
+
     private readonly IconButtonDrawable drawable;
     private IAnimationManager animationManager;
 

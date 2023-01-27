@@ -190,8 +190,7 @@ public partial class NavigationDrawer : TemplatedView, ICommandElement, IVisualT
 
     private void OnItemsRemoved(object sender, ItemsChangedEventArgs<View> e)
     {
-        var view = this.Items[e.Index];
-        this.PART_Items.Children.Remove(view);
+        this.PART_Items.Children.Remove(e.Item);
     }
 
     private void OnItemsCleared(object sender, EventArgs e)
@@ -216,8 +215,7 @@ public partial class NavigationDrawer : TemplatedView, ICommandElement, IVisualT
 
     private void OnFooterItemsRemoved(object sender, ItemsChangedEventArgs<View> e)
     {
-        var view = this.FooterItems[e.Index];
-        this.PART_Footer.Children.Remove(view);
+        this.PART_Footer.Children.Remove(e.Item);
     }
 
     private void OnFooterItemsCleared(object sender, EventArgs e)

@@ -105,7 +105,7 @@ public partial class ViewPager : View, ICommandElement, IVisualTreeElement
                 ViewPagerHandler.AddItem(
                     (ViewPagerHandler)this.Handler,
                     e.Index,
-                    this.Items[e.Index]
+                    e.Item
                 );
             }
             else

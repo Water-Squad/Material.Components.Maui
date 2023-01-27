@@ -164,8 +164,7 @@ public partial class Tabs : TemplatedView, IVisualTreeElement, ICommandElement
 
     private void OnItemsRemoved(object sender, ItemsChangedEventArgs<TabItem> e)
     {
-        var item = this.Items[e.Index];
-        this.PART_Content.Items.Remove(item.Content);
+        this.PART_Content.Items.Remove(e.Item.Content);
     }
 
     private void OnItemsCleared(object sender, EventArgs e)

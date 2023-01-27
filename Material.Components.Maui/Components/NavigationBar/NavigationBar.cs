@@ -91,8 +91,7 @@ public partial class NavigationBar : TemplatedView, IVisualTreeElement, ICommand
 
     private void OnItemsRemoved(object sender, ItemsChangedEventArgs<NavigationBarItem> e)
     {
-        var item = this.Items[e.Index];
-        this.PART_Bar.Remove(item);
+        this.PART_Bar.Remove(e.Item);
     }
 
     private void OnItemsCleared(object sender, EventArgs e)

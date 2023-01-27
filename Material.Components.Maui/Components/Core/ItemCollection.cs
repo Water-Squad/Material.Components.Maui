@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 
 namespace Material.Components.Maui.Core;
 
-public class ItemsChangedEventArgs<IView>
+public class ItemsChangedEventArgs<T>
 {
-    public string EventType;
-    public int Index;
+    public string EventType { get; set; }
+
+    public int Index { get; set; }
+
+    public T Item { get; set; }
 }
 
 public class ItemCollection<T> : ObservableCollection<T>
@@ -21,13 +20,27 @@ public class ItemCollection<T> : ObservableCollection<T>
     protected override void InsertItem(int index, T item)
     {
         base.InsertItem(index, item);
-        OnAdded?.Invoke(this, new ItemsChangedEventArgs<T> { EventType = "Insert", Index = index });
+
+        OnAdded?.Invoke(this, new ItemsChangedEventArgs<T>
+        {
+            EventType = "Insert",
+            Index = index,
+            Item = item
+        });
     }
 
     protected override void RemoveItem(int index)
     {
+        T item = this.Items[index];
+
         base.RemoveItem(index);
-        OnRemoved?.Invoke(this, new ItemsChangedEventArgs<T> { EventType = "Remove", Index = index });
+
+        OnRemoved?.Invoke(this, new ItemsChangedEventArgs<T>
+        {
+            EventType = "Remove", 
+            Index = index,
+            Item = item
+        });
     }
 
     protected override void ClearItems()

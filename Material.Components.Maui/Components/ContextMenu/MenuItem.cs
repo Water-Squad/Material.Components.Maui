@@ -288,8 +288,13 @@ public partial class MenuItem
         );
     }
 
-    protected override void OnBindingContextChanged()
+    protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        base.OnBindingContextChanged();
+        base.OnPropertyChanged(propertyName);
+
+        if (propertyName == nameof(IsEnabled))
+        {
+            this.ControlState = this.IsEnabled ? ControlState.Normal : ControlState.Disabled;
+        }
     }
 }

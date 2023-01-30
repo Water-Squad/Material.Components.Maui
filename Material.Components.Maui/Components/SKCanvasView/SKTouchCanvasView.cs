@@ -179,6 +179,12 @@ public partial class SKTouchCanvasView
 
                 break;
             }
+            case nameof(CommandParameter):
+            case nameof(BindingContext):
+            {
+                UpdateIsEnabledState();
+                break;
+            }
         }
     }
 
@@ -187,7 +193,7 @@ public partial class SKTouchCanvasView
         UpdateIsEnabledState();
     }
 
-    private void UpdateIsEnabledState()
+    internal void UpdateIsEnabledState()
     {
         bool isEnabled = Command == null || Command.CanExecute(CommandParameter);
         IsEnabled = isEnabled;

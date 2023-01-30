@@ -100,6 +100,12 @@ public partial class ContextMenu : ContentView, IVisualTreeElement
                         : this.Items.Count
                 ) * 48
             ) + 16d;
+
+        foreach (MenuItem menuItem in this.Items)
+        {
+            menuItem.UpdateIsEnabledState();
+        }
+
         this.PlatformShow(anchor);
     }
 

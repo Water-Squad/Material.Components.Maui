@@ -145,18 +145,14 @@ public partial class SKTouchCanvasView
         else if (e.ActionType == SKTouchAction.Moved)
         {
             this.Moved?.Invoke(this, e);
-            e.Handled = true;
         }
         else if (e.ActionType == SKTouchAction.Entered)
         {
             this.Entered?.Invoke(this, e);
-            e.Handled = true;
         }
         else if (e.ActionType == SKTouchAction.Exited)
         {
-            //this.isPressing = false;
             this.Exited?.Invoke(this, e);
-            e.Handled = true;
         }
         this.InvalidateSurface();
     }

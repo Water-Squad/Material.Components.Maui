@@ -30,7 +30,7 @@
 		<PackageTags>material</PackageTags>
 		<AssemblyVersion></AssemblyVersion>
 		<FileVersion></FileVersion>
-		<Version>0.1.8-beta</Version>
+		<Version>0.1.9-beta</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://github.com/Water-Squad/Material.Components.Maui</PackageProjectUrl>
 	</PropertyGroup>

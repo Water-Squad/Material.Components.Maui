@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace Material.Components.Maui;
 
-internal partial class CardContainer
+public partial class CardContainer
     : SKTouchCanvasView,
         IView,
         IShapeElement,

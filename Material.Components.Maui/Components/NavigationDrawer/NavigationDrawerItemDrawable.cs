@@ -143,13 +143,6 @@ internal class NavigationDrawerItemDrawable
             Color = this.view.BadgeColor.ToSKColor(),
             IsAntialias = true
         };
-        var borderPaint = new SKPaint
-        {
-            Style = SKPaintStyle.Stroke,
-            Color = SKColors.White,
-            StrokeWidth = 0.5f,
-            IsAntialias = true
-        };
 
         string text = this.view.BadgeCounter > 99 ? "99+" : this.view.BadgeCounter.ToString();
 
@@ -159,7 +152,7 @@ internal class NavigationDrawerItemDrawable
             IsAntialias = true,
             IsLinearText = true,
             TextSize = 12f,
-            Color = SKColors.White
+            Color = this.view.BadgeTextColor?.ToSKColor() ?? SKColors.White
         };
 
         var textBounds = new SKRect();
@@ -178,10 +171,7 @@ internal class NavigationDrawerItemDrawable
         var roundRect = new SKRoundRect(new SKRect(left, top, right, bottom), radius);
         canvas.DrawRoundRect(roundRect, backgroundPaint);
 
-        roundRect.Inflate(borderPaint.StrokeWidth, borderPaint.StrokeWidth);
-        canvas.DrawRoundRect(roundRect, borderPaint);
-
-        float x = left + horizontalPadding + (this.view.BadgeCounter < 10 ? 1f : -1f);
+        float x = left + horizontalPadding + (this.view.BadgeCounter < 10 ? 0.5f : -0.5f);
         float y = bounds.MidY - textBounds.MidY;
         canvas.DrawText(text, x, y, textPaint);
 
@@ -198,20 +188,12 @@ internal class NavigationDrawerItemDrawable
             Color = this.view.BadgeColor.ToSKColor(),
             IsAntialias = true
         };
-        var borderPaint = new SKPaint
-        {
-            Style = SKPaintStyle.Stroke,
-            Color = SKColors.White,
-            StrokeWidth = 1f,
-            IsAntialias = true
-        };
 
         float x = 36f;
         float y = 18f;
         float radius = 4f;
 
         canvas.DrawCircle(x, y, radius, backgroundPaint);
-        canvas.DrawCircle(x, y, radius, borderPaint);
 
         canvas.Restore();
     }
